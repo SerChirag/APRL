@@ -1,8 +1,8 @@
 <?php
 	session_start();
-	// require_once('connect.php');
-    $dbc = mysqli_connect('localhost', 'root', NULL, 'aprl')
-    or die('Unable to connect to database');
+	require('connect.php');
+    // $dbc = mysqli_connect('localhost', 'root', NULL, 'aprl')
+    // or die('Unable to connect to database');
 		// echo "I'm inside hahaha";
 	$descripdata = $_POST['description'];
 	$titledata = $_POST['title'];

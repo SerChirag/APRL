@@ -8,9 +8,11 @@ else{
     $username = $_SESSION['username'];
 
 }
+require('connect.php');
+
 $user = $_SESSION['username'];
-$dbc = mysqli_connect("localhost", "root", NULL, "aprl")
-or die("Unable to connect to database");
+// $dbc = mysqli_connect("localhost", "root", NULL, "aprl")
+// or die("Unable to connect to database");
 $query = "SELECT profession FROM userlogin WHERE username = '$username'";
 $result = mysqli_query($dbc, $query);
 $row = mysqli_fetch_array($result);
@@ -37,18 +39,19 @@ $current = $row['num'];
 $row = mysqli_fetch_array($result);
 $finished = $row['num'];
 
-mysqli_close($dbc);
+// mysqli_close($dbc);
 
 function count_project($status){
-    $dbc = mysqli_connect("localhost", "root", NULL, "aprl")
-    or die("Unable to connect to database");
+    // $dbc = mysqli_connect("localhost", "root", NULL, "aprl")
+    // or die("Unable to connect to database");
+    require('connect.php');
     
     $query = "SELECT * FROM project WHERE status = '$status'";
     $result = mysqli_query($dbc, $query)
-    or die('Unable to query project' );
+    or die('Unable to query project-count' );
     $current_count = mysqli_num_rows($result);
     
-    mysqli_close($dbc);
+    // mysqli_close($dbc);
     // echo "$status called = $current_count";
     echo $current_count;
     //return $current_count;

@@ -16,7 +16,7 @@ if(!isset($_COOKIE['username'])) {
 				$row = mysqli_fetch_array($result);
 				$_SESSION['username'] = $row['username'];
 				setcookie('username',$row['username'], time() + (60*60*24*30));
-				mysqli_close($dbc);
+				// mysqli_close($dbc);
 				$url = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/landing-page.php';
 				header('Location:'.$url);
 			}

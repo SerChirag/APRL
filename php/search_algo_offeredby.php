@@ -1,8 +1,10 @@
 <?php
     
     define("DB_MSG_ERROR", 'Could not connect!<br />Please contact the site\'s administrator.');
-    $conn = mysqli_connect("localhost", "root", NULL) or die(DB_MSG_ERROR);
-    $db = mysqli_select_db($conn,'aprl') or die(DB_MSG_ERROR);
+    require('connect.php');
+    $conn=$dbc;
+    // $conn = mysqli_connect("localhost", "root", NULL) or die(DB_MSG_ERROR);
+    // $db = mysqli_select_db($conn,'aprl') or die(DB_MSG_ERROR);
     $value_search = $_POST['value'];
     $radio = $_POST['radio_button'];
 

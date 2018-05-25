@@ -5,8 +5,9 @@ if(isset($_POST['username'])){
 	$username = $_POST['username'];
 }
 // echo $username;
-$dbc = mysqli_connect("localhost", "root", NULL, "aprl")
-or die("Unable to connect to database");
+require('connect.php');
+// $dbc = mysqli_connect("localhost", "root", NULL, "aprl")
+// or die("Unable to connect to database");
 $query = "SELECT profession FROM userlogin WHERE username = '$username'";
 $result = mysqli_query($dbc, $query);
 $row = mysqli_fetch_array($result);
@@ -236,7 +237,7 @@ if($row['profession']=='student'){
 	</div>
 	";
 }   
-mysqli_close($dbc);
+// mysqli_close($dbc);
 // echo'<div class="card card-plain">
 //                                         <div class="card-body">
 //                                             <div class="table-responsive">

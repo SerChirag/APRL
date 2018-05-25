@@ -91,7 +91,7 @@ if(isset($_GET['username'])){
         $tally1 = 0;
     }
 
-mysqli_close($dbc);
+// mysqli_close($dbc);
 
 ?>
 <!DOCTYPE html>

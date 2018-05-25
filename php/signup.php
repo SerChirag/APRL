@@ -1,8 +1,10 @@
 <?php
 if(!empty($_POST['Username']) && !empty($_POST['Firstname']) && !empty($_POST['Password'])){
-	
-	$dbc = mysqli_connect("localhost", "root", NULL, "aprl")
-	or die("Unable to connect to database");
+	require_once('signup.php');
+	require('connect.php');
+
+	// $dbc = mysqli_connect("localhost", "root", NULL, "aprl")
+	// or die("Unable to connect to database");
 	$firstname = $_POST['Firstname'];
 	$lastname = $_POST['Lastname'];
 	$username = $_POST['Username'];
@@ -35,6 +37,6 @@ if(!empty($_POST['Username']) && !empty($_POST['Firstname']) && !empty($_POST['P
 	else{
 		echo 'username already exists <br/>';
 	}
-	mysqli_close($dbc);
+	// mysqli_close($dbc);
 	}
 ?>

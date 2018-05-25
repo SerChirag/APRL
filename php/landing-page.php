@@ -24,7 +24,7 @@
         $lastname = $row['lastname'];
         $name = $firstname.' '.$lastname;
         $image = $row['image_url'];
-        mysqli_close($dbc);
+        // mysqli_close($dbc);
     }
 ?>
 
@@ -217,9 +217,9 @@ html, body {
                         <div class="row">
                             <?php 
                             /* SCRIPT FOR TRENDING BLOGS*/
-                            // require('connect.php');
-                            $dbc = mysqli_connect('localhost', 'root', NULL, 'aprl')
-                            or die('Unable to connect to database');
+                            require('connect.php');
+                            // $dbc = mysqli_connect('localhost', 'root', NULL, 'aprl')
+                            // or die('Unable to connect to database');
                             $query = "SELECT * FROM blog ORDER BY blog.date DESC, blog.reads DESC LIMIT 2";
                             $result = mysqli_query($dbc, $query) or die ('Unable to query trending blogs');
                             while($row = mysqli_fetch_array($result)){
@@ -244,7 +244,7 @@ html, body {
                             </div>
                           <?php 
                               }
-                              mysqli_close($dbc); 
+                            //   mysqli_close($dbc); 
                           ?>
                         </div>
                     </div>
@@ -258,9 +258,9 @@ html, body {
                         <div class="row">
                             <?php 
                             /* SCRIPT FOR TRENDING BLOGS*/
-                            // require('connect.php');
-                            $dbc = mysqli_connect('localhost', 'root', NULL, 'aprl')
-                            or die('Unable to connect to database');
+                            require('connect.php');
+                            // $dbc = mysqli_connect('localhost', 'root', NULL, 'aprl')
+                            // or die('Unable to connect to database');
                             $query = "SELECT lastblog FROM $var WHERE username = '$username'";
                             $result = mysqli_query($dbc, $query) or die ('Unable to query lastblog');
                             $row = mysqli_fetch_array($result);
@@ -294,7 +294,7 @@ html, body {
                             </div>
                           <?php 
                               }//}
-                              mysqli_close($dbc); 
+                            //   mysqli_close($dbc); 
                           ?>
                         </div>
                     </div>
@@ -305,7 +305,7 @@ html, body {
                             /* SCRIPT FOR TRENDING BLOGS*/
                     require('connect.php');
                     $query = "SELECT * FROM project WHERE status = 'available' ORDER BY project.addedon DESC";
-                    $result = mysqli_query($dbc, $query) or die ('Unable to query project');
+                    $result = mysqli_query($dbc, $query) or die ('Unable to query project-landing');
                     while($row = mysqli_fetch_array($result)){
                   ?>
                     <div class="card" data-background-color="blue">
@@ -331,7 +331,7 @@ html, body {
                     </div>
                     <?php
                       }
-                      mysqli_close($dbc);
+                    //   mysqli_close($dbc);
                     ?>
                 </div>
             </div> 

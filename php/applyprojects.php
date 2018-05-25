@@ -17,7 +17,7 @@
                 mysqli_query($dbc, $query)
                 or die('unable to query applyprojects');
                 echo 'Added successfully!';
-                mysqli_close($dbc);
+                // mysqli_close($dbc);
 
             }
         }

@@ -10,14 +10,15 @@ if(isset($_GET['hidden_name'])){
 }
     //  echo("$username");
 
-$dbc = mysqli_connect("localhost", "root", NULL, "aprl")
-or die("Unable to connect to database");
+    require('connect.php');
+// $dbc = mysqli_connect("localhost", "root", NULL, "aprl")
+// or die("Unable to connect to database");
 
 $query = "SELECT profession FROM userlogin WHERE username = '$username'";
 $result = mysqli_query($dbc, $query);
 $row = mysqli_fetch_array($result);
 $profession = $row['profession'];
-mysqli_close($dbc);
+// mysqli_close($dbc);
 ?>
 
 
@@ -116,7 +117,7 @@ mysqli_close($dbc);
             </div>
             ";
         }
-        mysqli_close($dbc);
+        // mysqli_close($dbc);
 
         ?>
         <!-- <button type="button" id="myblog" onclick="applicant()" value="My blogs">My blog</button> -->

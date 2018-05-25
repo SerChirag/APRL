@@ -11,11 +11,11 @@ else{
 if(isset($_POST["id"])){
 	show_project($_POST["id"]);
 }
-
 function show_project($id){
-$username = $_SESSION['username'];
- $dbc = mysqli_connect("localhost", "root", NULL, "aprl")
- or die("Unable to connect to database");
+    $username = $_SESSION['username'];
+    require('connect.php');
+//  $dbc = mysqli_connect("localhost", "root", NULL, "aprl")
+//  or die("Unable to connect to database");
 $query = "SELECT profession FROM userlogin WHERE username = '$username'";
 $result = mysqli_query($dbc, $query);
 $row = mysqli_fetch_array($result);
@@ -23,7 +23,7 @@ $profession = $row['profession'];
 
  $query = "SELECT * FROM `project` where project_id='$id'";
  $result = mysqli_query($dbc, $query)
- or die('Unable to query project' );
+ or die('Unable to query project-ppage' );
 
  $query2 = "SELECT MIN(`project_id`),MAX(`project_id`) FROM `project` ";
  $result2 = mysqli_query($dbc, $query2)
@@ -116,6 +116,6 @@ $profession = $row['profession'];
   </div>
   ";
 }
-mysqli_close($dbc);
+// mysqli_close($dbc);
 }
 ?>

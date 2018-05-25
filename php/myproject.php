@@ -7,7 +7,8 @@ if(!isset($_SESSION['username'])){
 $username = $_COOKIE['username'];
 if(isset($_GET['username'])){
             $username = $_GET['username'];
-        }
+		}
+	require('connect.php');		
 ?>
 
 
@@ -87,8 +88,8 @@ function applicant(id,username){
                    <!-- <h1 class="text-center">My Projects </h1> -->
                </div>	
 	<?php
-	$dbc = mysqli_connect("localhost", "root", NULL, "aprl")
-or die("Unable to connect to database");
+// 	$dbc = mysqli_connect("localhost", "root", NULL, "aprl")
+// or die("Unable to connect to database");
 
 $query = "SELECT profession FROM userlogin WHERE username = '$username'";
 $result = mysqli_query($dbc, $query);
@@ -119,7 +120,7 @@ if($row['profession']=='faculty'){
 		<span >";
 		$query1 = "SELECT tag.tagname from project join projecttag on project.project_id = projecttag.project_id join tag on projecttag.tag_id=tag.tag_id where project.project_id=$row[project_id]" ;
 		$result_tag = mysqli_query($dbc, $query1)
-		or die('Unable to query project' );
+		or die('Unable to query project-myproject' );
 		while($tag = mysqli_fetch_assoc($result_tag)){
 			echo    "<span >
 			<a href='search.php?id=\"$tag[tagname]\"' class='btn btn-primary btn-round btn-sm' >$tag[tagname]</a>
@@ -142,7 +143,7 @@ if($row['profession']=='faculty'){
 		";
 	}
 }
-mysqli_close($dbc);
+// mysqli_close($dbc);
 
 ?>
 	<!-- <button type="button" id="myproject" onclick="applicant()" value="My Projects">My Project</button> -->

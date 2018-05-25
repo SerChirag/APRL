@@ -56,7 +56,7 @@ if(isset($_GET['username'])){
     $email = $row['email'];
     // if($image!='fb_avatar_male.jpg')
     //     $image = $username.'/'.$image;
-    mysqli_close($dbc);
+    // mysqli_close($dbc);
 
 ?>
 

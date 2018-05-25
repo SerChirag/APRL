@@ -7,7 +7,7 @@
     else{
         define('APRL_UPLOADPATH', '../assets/img/');
         $username = $_SESSION['username'];
-        require_once('connect.php');
+        require('connect.php');
          
         $query = "SELECT profession FROM userlogin WHERE username = '$username'";
         $result = mysqli_query($dbc, $query);
@@ -80,7 +80,7 @@
             $cgpa = $row['cgpa'];
         // if($image!='fb_avatar_male.jpg')
         //     $image = $username.'/'.$image;
-        mysqli_close($dbc);
+        // mysqli_close($dbc);
     }
 ?>
 <!DOCTYPE html>

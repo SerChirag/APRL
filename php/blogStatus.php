@@ -93,7 +93,7 @@
 	      		$query = "UPDATE $var SET lastblog = NULL WHERE username = '$username'";
 	      			mysqli_query($dbc, $query);
 	      	}
-	 */     	mysqli_close($dbc);
+	 */     	//mysqli_close($dbc);
 	      //	return $blogid;
 		}
 ?>

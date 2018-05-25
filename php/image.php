@@ -8,9 +8,10 @@ else{
     $username = $_SESSION['username'];
     if(isset($_POST['id'])){
         $id = $_POST['id'];
-
-        $dbc = mysqli_connect("localhost", "root", NULL, "aprl")
-        or die("Unable to connect to database");
+    	require('connect.php');
+        
+        // $dbc = mysqli_connect("localhost", "root", NULL, "aprl")
+        // or die("Unable to connect to database");
 
         $query = "SELECT imageurl FROM projectimage WHERE project_id = '$id'";
         $result = mysqli_query($dbc, $query)

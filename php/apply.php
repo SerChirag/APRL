@@ -12,8 +12,10 @@ if (isset($_POST['id']) and isset($_POST['interested'])) {
     $motive = $_POST['interested'];
     $m = $_POST['id'];
     $user = $_SESSION['username'];
-    $dbc = mysqli_connect("localhost", "root", NULL, "aprl")
-    or die("Unable to connect to database");
+    require('connect.php');
+    
+    // $dbc = mysqli_connect("localhost", "root", NULL, "aprl")
+    // or die("Unable to connect to database");
     
     $duplicate = "SELECT count(`id`) FROM `applicant` WHERE `username`='$user' and `project_id` = $m";
     $check = mysqli_query($dbc,$duplicate)

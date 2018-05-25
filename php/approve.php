@@ -6,8 +6,9 @@ if(isset($_POST['id']) and isset($_POST['approve'])){
 	$id = $_POST['id'];
 	$approve = 'yes';
 	$approve = $_POST['approve'];
-	$dbc = mysqli_connect("localhost", "root", NULL, "aprl")
-	or die("Unable to connect to database");
+	require_once('signup.php');
+	// $dbc = mysqli_connect("localhost", "root", NULL, "aprl")
+	// or die("Unable to connect to database");
 	$query = "SELECT project.offeredby,applicant.username from `project` join `applicant` on applicant.project_id=project.project_id where id='$id'";
 	$result = mysqli_query($dbc, $query)
 	or die ('Unable to approve project');
@@ -32,6 +33,6 @@ if(isset($_POST['id']) and isset($_POST['approve'])){
 	else{
 		echo "You are not privilaged to approve this project.";
 	}
-	mysqli_close($dbc);
+	// mysqli_close($dbc);
 }
 ?>

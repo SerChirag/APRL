@@ -63,8 +63,9 @@ else{
 function getTags(){
         // require_once('connect.php');
     // require_once('likesIncr');
-    $dbc = mysqli_connect('localhost', 'root', NULL, 'aprl')
-    or die('Unable to connect to database');
+	require('connect.php');    
+    // $dbc = mysqli_connect('localhost', 'root', NULL, 'aprl')
+    // or die('Unable to connect to database');
     $blogId = $_GET['hidden_name'];
 
         $query3 = "SELECT tagname FROM tag INNER JOIN blogtag ON blogtag.tag_id = tag.tag_id WHERE blogtag.blog_id = 
@@ -85,8 +86,9 @@ function getTags(){
 }
 
 function suggestTag(){
-    $dbc = mysqli_connect('localhost', 'root', NULL, 'aprl')
-    or die('Unable to connect to database');
+	require('connect.php');    
+    // $dbc = mysqli_connect('localhost', 'root', NULL, 'aprl')
+    // or die('Unable to connect to database');
     $blogId = $_GET['hidden_name'];
 
     $query3 = "SELECT tagname FROM tag INNER JOIN blogtag ON blogtag.tag_id = tag.tag_id WHERE blogtag.blog_id = 
@@ -391,8 +393,10 @@ console.log("im inside suggest");
 
 
 <?php 
- $dbc = mysqli_connect('localhost', 'root', NULL, 'aprl')
-    or die('Unable to connect to database');
+	require('connect.php');
+    
+//  $dbc = mysqli_connect('localhost', 'root', NULL, 'aprl')
+//     or die('Unable to connect to database');
     $blogId = $_GET['hidden_name'];;
 
     $query3 = "SELECT tagname FROM tag INNER JOIN blogtag ON blogtag.tag_id = tag.tag_id WHERE blogtag.blog_id = 

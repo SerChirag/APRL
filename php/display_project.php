@@ -7,15 +7,17 @@
   $start = $_POST['start'];
   $end = $_POST['end'];
   $status = $_POST["status"];
-    $dbc = mysqli_connect("localhost", "root", NULL, "aprl")
-    or die("Unable to connect to database");
+    require('connect.php');
+  
+    // $dbc = mysqli_connect("localhost", "root", NULL, "aprl")
+    // or die("Unable to connect to database");
 
     if($status=="all")
     $query = "SELECT * FROM `project` WHERE `project_id` >= $start ORDER BY `project_id` ASC LIMIT $end ";
     else
     $query = "SELECT * FROM project where status='$status' and `project_id` >= $start ORDER BY `project_id` ASC LIMIT $end";
     $result = mysqli_query($dbc, $query)
-    or die('Unable to query project' );
+    or die('Unable to query project-af' );
     // update start and end for next page
     $start=$end;
     echo "<a onclick='page_navigate(\"$start\",\"$end\")'><h6>Next Page</h6></a>";
@@ -33,7 +35,7 @@
                         <span >";
                          $query1 = "SELECT tag.tagname from project join projecttag on project.project_id = projecttag.project_id join tag on projecttag.tag_id=tag.tag_id where project.project_id=$row[project_id]" ;
     						$result_tag = mysqli_query($dbc, $query1)
-    						or die('Unable to query project' );
+    						or die('Unable to query project-tag' );
 						while($tag = mysqli_fetch_assoc($result_tag)){
                     echo    "<span >
                         <a href='search.php?id=\"$tag[tagname]\"' class='btn btn-primary btn-round btn-sm' >$tag[tagname]</a>
@@ -53,19 +55,19 @@
               echo "</div>
               ";
     }
-    mysqli_close($dbc);
+    // mysqli_close($dbc);
 }
 
 function display_project($status){
-    $dbc = mysqli_connect("localhost", "root", NULL, "aprl")
-    or die("Unable to connect to database");
-
+    // $dbc = mysqli_connect("localhost", "root", NULL, "aprl")
+    // or die("Unable to connect to database");
+    require('connect.php');
     if($status=="all")
     $query = "SELECT * FROM project ORDER BY addedon DESC";
     else
     $query = "SELECT * FROM project where status='$status' ORDER BY addedon DESC";
     $result = mysqli_query($dbc, $query)
-    or die('Unable to query project' );
+    or die('Unable to query project-display' );
 
     //echo mysqli_num_rows($result);
     while($row = mysqli_fetch_assoc($result)){
@@ -80,7 +82,7 @@ function display_project($status){
                         <span >";
                          $query1 = "SELECT tag.tagname from project join projecttag on project.project_id = projecttag.project_id join tag on projecttag.tag_id=tag.tag_id where project.project_id=$row[project_id]" ;
                 $result_tag = mysqli_query($dbc, $query1)
-                or die('Unable to query project' );
+                or die('Unable to query project-query1' );
             while($tag = mysqli_fetch_assoc($result_tag)){
                     echo    "<span >
                     <a href='search.php?id=\"$tag[tagname]\"' class='btn btn-primary btn-round btn-sm' >$tag[tagname]</a>
@@ -102,7 +104,7 @@ function display_project($status){
                         echo "</div>
               ";
     }
-    mysqli_close($dbc);
+    // mysqli_close($dbc);
 }
 ?>
 
