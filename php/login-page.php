@@ -2,7 +2,7 @@
     require_once('start-session.php');
     if(isset($_SESSION['username'])){
         $url = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/landing-page.php';
-        header('Location:'.$url); 
+        header('Location:'.$url);
     }
     if(!isset($_POST['submit']))
         require_once('signup.php')
@@ -11,7 +11,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    
+
     <link rel="icon" type="image/png" href="../assets/favicon/favicon-16x16.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>Login Page </title>
@@ -32,12 +32,12 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
         <div class="container">
-            
+
             <div class="navbar-translate">
                 <a class="navbar-brand" href="#" rel="tooltip"  data-placement="bottom" >
                     APRl
                 </a>
-                
+
             </div>
             <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="../assets/img/blurred-image-1.jpg">
             </div>
@@ -78,7 +78,7 @@
                                 <a href="#pablo" class="link" data-toggle="modal" data-target="#myModal">Create Account</a>
                             </h6>
                         </div>
-                        
+
                     </form>
                 </div>
             </div>
@@ -155,14 +155,14 @@
                     </div>
                     </form>
                     <div class="modal-footer">
-                        
+
                     </div>
                 </div>
             </div>
         </div>
         <footer class="footer">
             <div class="container">
-               
+
                 <div class="copyright">
                     &copy;
                     <script>

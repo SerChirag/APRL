@@ -1,5 +1,4 @@
 <?php
-session_start();
 if(!isset($_SESSION['username'])){
     $url = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/login-page.php';
     header('Location:'.$url);
@@ -8,7 +7,7 @@ $username = $_COOKIE['username'];
 if(isset($_GET['username'])){
             $username = $_GET['username'];
 		}
-	require('connect.php');		
+	require('connect.php');
 ?>
 
 
@@ -47,7 +46,7 @@ function applicant(id,username){
 			//$("#applicant_table"+id).toggle(500);
 		}
 	});
-}	
+}
 
 </script>
 </head>
@@ -69,8 +68,8 @@ function applicant(id,username){
                 </h1>
 
                     <h3 class="title"><?php echo ("$firstname $lastname");?></h3>
-                    
-                    
+
+
                 </div>
             </div>
         </div>
@@ -86,7 +85,7 @@ function applicant(id,username){
 				<div class="container tim-container" style="max-width:800px; padding-top:100px">
 
                    <!-- <h1 class="text-center">My Projects </h1> -->
-               </div>	
+               </div>
 	<?php
 // 	$dbc = mysqli_connect("localhost", "root", NULL, "aprl")
 // or die("Unable to connect to database");
@@ -99,7 +98,7 @@ if($row['profession']=='student'){
 	// echo $profession;
 		echo "<div id = \"applicant_table\"></div>";
 	echo"<script> applicant('','$username');</script>";
-	
+
 }
 if($row['profession']=='faculty'){
 	// echo $profession;
@@ -114,7 +113,7 @@ if($row['profession']=='faculty'){
 
 		<h1 class='text-center'>$row[title]</h1>
 
-		<!--    Display Current Projects --> 
+		<!--    Display Current Projects -->
 		<p>$short_desc</p>
 
 		<span >";
@@ -128,13 +127,13 @@ if($row['profession']=='faculty'){
 		}
 		echo
 		" </span>
-		<!--     end extras --> 
-		<div class='col text-center'> 
+		<!--     end extras -->
+		<div class='col text-center'>
 		 <a href='project.php?id=$row[project_id]' onclick='showPage(\"$row[project_id]\")' class='btn btn-primary btn-round btn-lg'>Detail Description</a> ";
 
-		 if($username == $_COOKIE['username']){         
+		 if($username == $_COOKIE['username']){
 
-		echo"<script> applicant(\"$row[project_id]\",'$username');</script>"; 
+		echo"<script> applicant(\"$row[project_id]\",'$username');</script>";
 		 }
 		echo"
 		</div>
@@ -187,10 +186,10 @@ if($row['profession']=='faculty'){
 
             }
         });
-        
+
 
     });
-    
+
 </script>
 </body>
 </html>

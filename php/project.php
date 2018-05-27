@@ -45,12 +45,12 @@ function count_project($status){
     // $dbc = mysqli_connect("localhost", "root", NULL, "aprl")
     // or die("Unable to connect to database");
     require('connect.php');
-    
+
     $query = "SELECT * FROM project WHERE status = '$status'";
     $result = mysqli_query($dbc, $query)
     or die('Unable to query project-count' );
     $current_count = mysqli_num_rows($result);
-    
+
     // mysqli_close($dbc);
     // echo "$status called = $current_count";
     echo $current_count;
@@ -66,8 +66,8 @@ function count_project($status){
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="../assets/favicon/favicon-16x16.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Project Page</title> 
-    
+    <title>Project Page</title>
+
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -82,7 +82,7 @@ function count_project($status){
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>
         function showHint(str) {
-            if (str.length == 0) { 
+            if (str.length == 0) {
                 document.getElementById("project_overview").innerHTML = "";
                 return;
             } else {
@@ -101,10 +101,10 @@ function count_project($status){
         function apply(str,apply_id) {
             var a_id = apply_id.slice(5,apply_id.length);
             console.log (`${a_id}`);
-            if (str.length == 0) { 
+            if (str.length == 0) {
                 document.getElementById(apply_id).innerHTML = "";
                 return;
-            } 
+            }
             else {
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function() {
@@ -142,6 +142,7 @@ function count_project($status){
         });
     </script>
     <script>
+
         function change_image(id){
             $.ajax({
                 type: "POST",
@@ -182,6 +183,19 @@ function count_project($status){
                 }
             });
         }
+        function deleteProject(id){
+          $.ajax({
+              type: 'POST',
+              url: 'deleteproject.php',
+              data: {
+                  'id':id
+              },
+              success: function(data){
+                  $('#confirmation').html(data);
+              }
+          });
+          console.log('project deleted!');
+        }
     </script>
 </head>
 
@@ -191,7 +205,7 @@ function count_project($status){
     <!-- End Navbar -->
     <div class="wrapper">
         <div class="page-header page-header-small" filter-color="orange">
-            <?php $image_url = "../assets/img/bg3.jpg"; echo '<span id = "_image"> 
+            <?php $image_url = "../assets/img/bg3.jpg"; echo '<span id = "_image">
             <div class="page-header-image" data-parallax="true" style="background-image: url('.$image_url.');"></span>
             </div>'; ?>
             <div class="container">
@@ -225,7 +239,7 @@ function count_project($status){
                         <img src="../assets/img/ryan.jpg" alt="">
                     </div> -->
                 </div>
-                
+
                 <div class="container tim-container" style="max-width:800px; padding-top:100px">
 
                    <!-- <h1 class="text-center">Project/Intern Opportunities </h1> -->
@@ -286,9 +300,9 @@ function count_project($status){
 
             }
         });
-        
+
 
     });
-    
+
 </script>
 </html>

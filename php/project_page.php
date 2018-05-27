@@ -9,6 +9,7 @@ else{
 }
 
 if(isset($_POST["id"])){
+  $pid = $_POST['id'];
 	show_project($_POST["id"]);
 }
 function show_project($id){
@@ -33,14 +34,23 @@ $profession = $row['profession'];
  $nextid = $min_max['MAX(`project_id`)'];
 
  while($row = mysqli_fetch_assoc($result)){
-   echo " <div class='container tim-container' style='max-width:800px; padding-top:10px'>
-
+   echo "
+    <div class='container tim-container' style='max-width:800px; padding-top:10px'>
+   <div id='confirmation'></div>
    <h1 class='text-center'>$row[title]</h1>
+   <div class='col-md-10'>
+   <button class='btn btn-primary btn-round' type='button' id='edit'>
+     <i class='now-ui-icons design-2_ruler-pencil'></i> Edit
+   </button>
+     <button class='btn btn-primary btn-round' type='button' id='delete' data-toggle='modal' data-target='#confirm-delete'>
+       <i class='now-ui-icons ui-1_simple-delete'></i> Delete
+     </button>
+   </div>
    <h6 class='col text-right'>Offered By - <a href='profile-page.php?username=$row[offeredby]'>$row[offeredby]</a>
    <br> Posted on - $row[addedon]
    </h6>";
    if($row['status'] == "available" and $profession!='faculty'){
-            echo" 
+            echo"
                 <!--collapse -->
                             <div id='collapse'>
                                 <div class='row'>
@@ -49,7 +59,7 @@ $profession = $row['profession'];
                                             <div class='card card-plain'>
                                                 <div class='card-header' role='tab' id='headingOne'>
                                                     <a data-toggle='collapse' data-parent='#accordion' href='#collapseOne' aria-expanded='true' aria-controls='collapseOne'>
-                                                        Apply for project       
+                                                        Apply for project
                                                         <i class='now-ui-icons arrows-1_minimal-down'></i>
                                                     </a>
                                                     <a >Last Date To Apply : $row[lastdate]</a>
@@ -58,7 +68,7 @@ $profession = $row['profession'];
                                                     <div class='card-body'>
                                                        <input hidden id='p_id' value='$row[project_id]'><p><b>Why are you interested in this project?</b></p>
                                                             <textarea class='form-control' id='interested'></textarea>
-                                                            <div class='col text-left'> 
+                                                            <div class='col text-left'>
                                                                 <button id = 'apply_form' class='btn btn-primary ' type='button'>
                                                                 <i class='now-ui-icons ui-2_favourite-28'></i> Apply
                                                                 </button>
@@ -71,13 +81,13 @@ $profession = $row['profession'];
                                     </div>
                                 </div>
                             </div>
-                          
+
                             <!--  end collapse -->";
   }
   echo "
-  <!--    Display Current Projects --> 
+  <!--    Display Current Projects -->
   <p>$row[description]</p>
-  
+
   <span >";
   $query1 = "SELECT tag.tagname from project join projecttag on project.project_id = projecttag.project_id join tag on projecttag.tag_id=tag.tag_id where project.project_id=$row[project_id]" ;
   $result_tag = mysqli_query($dbc, $query1)
@@ -88,8 +98,8 @@ $profession = $row['profession'];
     </span>";
   }
   $current_id = $row["project_id"];
-  
-  $nextquery= "SELECT `project_id` FROM `project` WHERE `project_id` > $current_id ORDER BY `project_id` ASC LIMIT 1"; 
+
+  $nextquery= "SELECT `project_id` FROM `project` WHERE `project_id` > $current_id ORDER BY `project_id` ASC LIMIT 1";
   $nextresult = mysqli_query($dbc,$nextquery)
   or die("Unable to get next project_id");
   if(mysqli_num_rows($nextresult) > 0)
@@ -98,7 +108,7 @@ $profession = $row['profession'];
     $nextid  = $nextrow["project_id"];
   }
 
-  $prevquery= "SELECT `project_id` FROM `project` WHERE `project_id` = (SELECT MAX(`project_id`) FROM `project` WHERE `project_id`< $current_id)"; 
+  $prevquery= "SELECT `project_id` FROM `project` WHERE `project_id` = (SELECT MAX(`project_id`) FROM `project` WHERE `project_id`< $current_id)";
   $prevresult = mysqli_query($dbc,$prevquery)
   or die("Unable to get prev project_id");
   if(mysqli_num_rows($prevresult) > 0)
@@ -107,13 +117,28 @@ $profession = $row['profession'];
     $previd  = $prevrow['project_id'];
   }
   echo
-  " </span>
-  <!--     end extras --> 
-  <div class='col text-center'> 
-  <a onclick='showPage(\"$previd\")' class='btn btn-primary btn-round btn-lg'>Previous Project</a> 
-  <a onclick='showPage(\"$nextid\")' class='btn btn-primary btn-round btn-lg'>Next Project</a> 
-  </div> 
+  "
+   </span>
+  <!--     end extras -->
+  <div class='col text-center'>
+  <a onclick='showPage(\"$previd\")' class='btn btn-primary btn-round btn-lg'>Previous Project</a>
+  <a onclick='showPage(\"$nextid\")' class='btn btn-primary btn-round btn-lg'>Next Project</a>
   </div>
+  </div>
+  <div class='modal fade modal-mini modal-primary' id='confirm-delete' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' style='display: none;'' aria-hidden='true'>
+            <div class='modal-dialog'>
+                <div class='modal-content'>
+                    <div class='modal-body'>
+                        <p>Are you sure you want to delete the project?</p>
+                    </div>
+                    <div class='modal-footer'>
+                        <button type='button' class='btn btn-link btn-neutral' onclick='deleteProject($current_id );'>Yes</button>
+                        <button type='button' class='btn btn-link btn-neutral' data-dismiss='modal'>Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
   ";
 }
 // mysqli_close($dbc);
