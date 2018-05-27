@@ -37,16 +37,18 @@ $profession = $row['profession'];
    echo "
     <div class='container tim-container' style='max-width:800px; padding-top:10px'>
    <div id='confirmation'></div>
-   <h1 class='text-center'>$row[title]</h1>
-   <div class='col-md-10'>
-   <button class='btn btn-primary btn-round' type='button' id='edit'>
-     <i class='now-ui-icons design-2_ruler-pencil'></i> Edit
-   </button>
-     <button class='btn btn-primary btn-round' type='button' id='delete' data-toggle='modal' data-target='#confirm-delete'>
-       <i class='now-ui-icons ui-1_simple-delete'></i> Delete
+   <h1 class='text-center'>$row[title]</h1>";
+   if($username==$row['offeredby']){
+   echo "<div class='col-md-10'>
+      <button class='btn btn-primary btn-round' type='button' id='edit'>
+       <i class='now-ui-icons design-2_ruler-pencil'></i> Edit
      </button>
-   </div>
-   <h6 class='col text-right'>Offered By - <a href='profile-page.php?username=$row[offeredby]'>$row[offeredby]</a>
+       <button class='btn btn-primary btn-round' type='button' id='delete' data-toggle='modal' data-target='#confirm-delete'>
+         <i class='now-ui-icons ui-1_simple-delete'></i> Delete
+       </button>
+   </div>";}
+
+   echo "<h6 class='col text-right'>Offered By - <a href='profile-page.php?username=$row[offeredby]'>$row[offeredby]</a>
    <br> Posted on - $row[addedon]
    </h6>";
    if($row['status'] == "available" and $profession!='faculty'){
