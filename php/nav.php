@@ -1,5 +1,5 @@
 <?php
-  
+
    $username = $_SESSION['username'];
     require('connect.php');
     $query = "SELECT profession FROM userlogin WHERE username = '$username'";
@@ -71,14 +71,13 @@ $appy = '
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown" data-placement="left">
                     <a class="dropdown-item" href="profile-page.php">Profile</a>';
                     if($profession=='faculty') $appy .= '<a class="dropdown-item" href="addproject.php">Add Project</a>';
-                    
+
                  $appy .= '<div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="edit-profile.php" >Edit Profile</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="logout.php">Logout</a>
                 </div>
             </div>
-            <a class="dropdown-item" href="profile-page.php">Profile</a>
         </div>
     </nav>
     ';
