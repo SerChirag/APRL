@@ -210,8 +210,7 @@ function count_project($status){
             <div class="page-header-image" data-parallax="true" style="background-image: url('.$image_url.');"></span>
             </div>'; ?>
             <div class="container">
-                <div
-                ="content-center">
+                <div class="content-center">
 
                     <h2 class="title">Project/Intern Opportunities</h2>
                     <p class="category">For Researchers and learners</p>
