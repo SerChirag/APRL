@@ -123,7 +123,10 @@ if($image!='fb_avatar_male.jpg')
     <meta property="og:description" content="Start your development with a beautiful Bootstrap 4 UI kit." />
     <meta property="og:site_name" content="Creative Tim" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- <link href="../assets/css/now-ui-kit.css?v=1.1.0" rel="stylesheet" /> -->
+    <link href="../assets/css/demo.css" rel="stylesheet" />
+    <link href="../assets/css/daddy.css" rel="stylesheet" />
 <script>
     $(document).ready(function(){
    $(".row .tag badge badge-danger").each(function() {
@@ -146,7 +149,7 @@ if($image!='fb_avatar_male.jpg')
 
                 <div class="content-center">
                     <div class="photo-container">
-                        <img class="photo-container" src= <?php echo '"../assets/img/'.$image.'"'?> alt="">
+                        <img class="photo-container" src= <?php echo '"../assets/img/user/'.$image.'"'?> alt="">
                     </div>
                     <h3 class="title"><?php echo "$firstname $lastname";?></h3>
                     <p class="category"><?php echo $credential?></p>

@@ -46,7 +46,7 @@ $appy = '
 <nav class="navbar navbar-expand-sm bg-primary fixed-top navbar-transparent " color-on-scroll="500">
         <div class="container">
             <div class="navbar-translate">
-                <a class="navbar-brand" href="landing-page.php"  data-placement="bottom" target="_blank">
+                <a class="navbar-brand" href="landing-page.php"  data-placement="bottom" >
                     <img src="../assets/favicon/invert.png" id="logo_id">
                 </a>
             </div>

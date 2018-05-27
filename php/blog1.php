@@ -300,36 +300,7 @@ console.log("im inside suggest");
 
 	<!-- <script src="blogScript.js" ></script> -->
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
-        <div class="container">
-            <div class="dropdown button-dropdown">
-                <a href="#pablo" class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">
-                    <span class="button-bar"></span>
-                    <span class="button-bar"></span>
-                    <span class="button-bar"></span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-header">Dropdown header</a>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">One more separated link</a>
-                </div>
-            </div>
-            <div class="navbar-translate">
-                <a class="navbar-brand" href="http://demos.creative-tim.com/now-ui-kit/index.html" rel="tooltip" title="Designed by Invision. Coded by Creative Tim" data-placement="bottom" target="_blank">
-                    APRL
-                </a>
-                
-            </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="../assets/img/blurr.jpg">
-        
-            </div>
-        </div>
-    </nav>
+    <?php $nav_bar = include_once ("nav.php"); echo $nav_bar; ?>
     <!-- End Navbar -->
     <div class="wrapper">
         <div class="page-header page-header-small">

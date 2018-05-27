@@ -102,20 +102,22 @@ html, body {
     <nav class="navbar navbar-expand-lg bg-primary">
         <div class="container">
             <div class="navbar-translate">
-                <a class="navbar-brand" href="landing-page.php"  data-placement="bottom" target="_blank">
+                <a class="navbar-brand" href="landing-page.php"  data-placement="bottom" >
                     <img src="../assets/favicon/invert.png" id="logo_id">
-                </a>
-                
+                </a>  
             </div>
+            <a class="dropdown-item" href="project.php">All Projects</a>
+            <a class="dropdown-item" href="myproject.php">My Projects</a>
+            <a class="dropdown-item" href="myblog.php">My Blogs</a>
+            <a class="dropdown-item" href="blogInput.php">New Blog</a>
+            <a class="dropdown-item" href="profile-page.php">Profile</a>
+            
             <div class="dropdown button-dropdown">
                 <a href="#pablo" class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">
                     <img class="photo-container" src= <?php echo '"../assets/img/user/'.$image.'"'?> alt="Profile Picture" id="daddy_image">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown" data-placement="left">
-                    <a class="dropdown-item" href="profile-page.php">Profile</a>
-                    <a class="dropdown-item" href="blog.php">Blog</a>
-                    <a class="dropdown-item" href="project.php">Project</a>
-                    <?php if($profession=='faculty') echo '<a class="dropdown-item" href="#" data-toggle="modal" data-target="#myModal1">New Peoject</a>'; ?>
+                    <?php if($profession=='faculty') echo '<a class="dropdown-item" href="addproject.php" >New Project</a>'; ?>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="edit-profile.php" >Edit Profile</a>
                     <div class="dropdown-divider"></div>
