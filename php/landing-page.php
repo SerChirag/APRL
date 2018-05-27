@@ -133,41 +133,8 @@ html, body {
 
 <body class="index-page">
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-<nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
-        <div class="container">
-            <div class="navbar-translate">
-                <a class="navbar-brand" href="landing-page.php"  data-placement="bottom" target="_blank">
-                    <img src="../assets/favicon/invert.png" id="logo_id">
-                </a>
-            </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="../assets/img/blurred-image-1.jpg">
-            </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="input-group form-group-no-border ">
-                    <span class="input-group-addon">
-                        <i class="now-ui-icons ui-1_zoom-bold"></i>
-                    </span>
-                    <input type="text" class="form-control" id="search_bar" placeholder="Search..." name="search_bar">
-                </div>
-            </div>
-            <div class="dropdown button-dropdown">
-                <a href="#pablo" class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">
-                    <img class="photo-container" src= <?php echo '"../assets/img/user/'.$image.'"'?> alt="Profile Picture" id="daddy_image">
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown" data-placement="left">
-                    <a class="dropdown-item" href="profile-page.php">Profile</a>
-                    <a class="dropdown-item" href="blog.php">Blog</a>
-                    <a class="dropdown-item" href="project.php">Project</a>
-                    <?php if($profession=='faculty') echo '<a class="dropdown-item" href="#" data-toggle="modal" data-target="#myModal1">New Peoject</a>'; ?>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="edit-profile.php" >Edit Profile</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="logout.php">Logout</a>
-                </div>
-            </div>
-            
-        </div>
-    </nav>
+<?php $nav_bar = include_once ("nav.php"); echo $nav_bar; ?>
+
 <!-- Welcome message based on time -->
     <br>
     <br>

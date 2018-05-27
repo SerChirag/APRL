@@ -78,8 +78,9 @@ $profession = $row['profession'];
                  <!-- <h1 class="text-center">blog/Intern Opportunities </h1> -->
              </div>	
              <?php
-             $dbc = mysqli_connect("localhost", "root", NULL, "aprl")
-                or die("Unable to connect to database");
+             require("connect.php");
+            //  $dbc = mysqli_connect("localhost", "root", NULL, "aprl")
+                // or die("Unable to connect to database");
              $query = "SELECT * FROM blog where `offeredby`='$username' ORDER BY date DESC";
     // echo $query;
              $result = mysqli_query($dbc, $query)

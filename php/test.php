@@ -1,3 +1,3 @@
 <?php 
-echo shell_exec("/usr/bin/python /opt/lampp/htdocs/php/td.py 2>&1");
+echo shell_exec("/usr/bin/python /home/prabhakar/Source/APRL/php/td.py 2>&1");
 ?>

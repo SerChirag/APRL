@@ -1,10 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 
 import nltk
 from rake_nltk import Rake
 import MySQLdb
 import re
-db=MySQLdb.connect(user="root",passwd="",db="aprl",unix_socket="/opt/lampp/var/mysql/mysql.sock")
+db=MySQLdb.connect(user="root",passwd="admin123",db="aprl",unix_socket="/run/mysqld/mysqld.sock")
 cursor = db.cursor()
 cursor.execute("SELECT description FROM blog ORDER BY date DESC LIMIT 1")
 raw_html = cursor.fetchone()[0]
@@ -28,13 +28,15 @@ for i in d:
 
 
 try:
+    # print text
     cursor.execute("UPDATE blog SET keywords = '%s' ORDER BY date DESC LIMIT 1" % s)
     db.commit()
+    # print "updated in blog database"
 except:
     pass
 
 db.close()
-#print r.get_ranked_phrases()[:10]"""
+# print r.get_ranked_phrases()[:10]
 
 
 

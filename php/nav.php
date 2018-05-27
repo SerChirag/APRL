@@ -50,6 +50,10 @@ $appy = '
                     <img src="../assets/favicon/invert.png" id="logo_id">
                 </a>
             </div>
+            <a class="dropdown-item" href="project.php">All Projects</a>
+            <a class="dropdown-item" href="myproject.php">My Projects</a>
+            <a class="dropdown-item" href="myblog.php">My Blogs</a>
+            <a class="dropdown-item" href="blogInput.php">New Blog</a>
             <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="../assets/img/blurred-image-1.jpg">
             </div>
             <div class="col-sm-6 col-lg-3">
@@ -65,9 +69,7 @@ $appy = '
                     <img class="photo-container" src= "../assets/img/user/'.$p_image.'" alt="Profile Picture" id="daddy_image">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown" data-placement="left">
-                    <a class="dropdown-item" href="profile-page.php">Profile</a>
-                    <a class="dropdown-item" href="myblog.php">My Blogs</a>
-                    <a class="dropdown-item" href="myproject.php">My Projects</a>';
+                    <a class="dropdown-item" href="profile-page.php">Profile</a>';
                     if($profession=='faculty') $appy .= '<a class="dropdown-item" href="addproject.php">Add Project</a>';
                     
                  $appy .= '<div class="dropdown-divider"></div>
@@ -76,7 +78,7 @@ $appy = '
                     <a class="dropdown-item" href="logout.php">Logout</a>
                 </div>
             </div>
-            
+            <a class="dropdown-item" href="profile-page.php">Profile</a>
         </div>
     </nav>
     ';
