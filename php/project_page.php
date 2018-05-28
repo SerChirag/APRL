@@ -100,7 +100,13 @@ $profession = $row['profession'];
     </span>";
   }
   $current_id = $row["project_id"];
-
+  
+  $query3 = "SELECT fame_fund FROM project WHERE project_id = '$current_id'";
+  $result3 = mysqli_query($dbc, $query3);
+  $row3 = mysqli_fetch_array($result3);
+  $fame_fund = $row['fame_fund'];
+  echo "Current Funding : ".$fame_fund;
+  
   $nextquery= "SELECT `project_id` FROM `project` WHERE `project_id` > $current_id ORDER BY `project_id` ASC LIMIT 1";
   $nextresult = mysqli_query($dbc,$nextquery)
   or die("Unable to get next project_id");
@@ -120,9 +126,14 @@ $profession = $row['profession'];
   }
   echo
   "
-   </span>
-  <!--     end extras -->
-  <div class='col text-center'>
+  <br> 
+  </span>
+  <!--     end extras --> 
+  <div class='col text-center'> 
+  <br>
+  <input type='text' value='' id='fame_form' placeholder='Regular' class='form-control' />
+  <a id='fame_support' onclick='showFame(\"$current_id\")' class='btn btn-primary btn-round btn-lg'>Support</a> 
+  <br>
   <a onclick='showPage(\"$previd\")' class='btn btn-primary btn-round btn-lg'>Previous Project</a>
   <a onclick='showPage(\"$nextid\")' class='btn btn-primary btn-round btn-lg'>Next Project</a>
   </div>

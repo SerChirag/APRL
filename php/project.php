@@ -197,6 +197,28 @@ function count_project($status){
           });
           console.log('project deleted!');
         }
+        function showFame(id) {
+            var user_id = '<?php echo $username; ?>';
+            var value_fame = $("#fame_form").val();
+            if(isNaN(value_fame)){
+                alert("Enter a number");
+            }
+            else{
+                $.ajax({
+                    type: "POST",
+                    url: "transaction.php",
+                    data: {
+                        'username':user_id,
+                        'project_id':id,
+                        'data':value_fame
+                    },
+                    success: function(data){
+                        location.reload();
+                    }
+                });   
+            }
+
+        }
     </script>
 </head>
 

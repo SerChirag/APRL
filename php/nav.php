@@ -2,11 +2,12 @@
 
    $username = $_SESSION['username'];
     require('connect.php');
-    $query = "SELECT profession FROM userlogin WHERE username = '$username'";
+    $query = "SELECT * FROM userlogin WHERE username = '$username'";
     $result = mysqli_query($dbc, $query);
     $row = mysqli_fetch_array($result);
     $profession = $row['profession'];
     $var=$profession."info";
+    $fame = $row['fame'];    
     $query = "SELECT * FROM $var WHERE username = '$username'";
     $result = mysqli_query($dbc, $query)
     or die('Unable to query '.$var );
@@ -49,11 +50,11 @@ $appy = '
                 <a class="navbar-brand" href="landing-page.php"  data-placement="bottom" >
                     <img src="../assets/favicon/invert.png" id="logo_id">
                 </a>
-            </div>
-            <a class="dropdown-item" href="project.php">All Projects</a>
-            <a class="dropdown-item" href="myproject.php">My Projects</a>
-            <a class="dropdown-item" href="myblog.php">My Blogs</a>
-            <a class="dropdown-item" href="blogInput.php">New Blog</a>
+                </div>
+                <a class="dropdown-item" href="project.php">All Projects</a>
+                <a class="dropdown-item" href="myproject.php">My Projects</a>
+                <a class="dropdown-item" href="myblog.php">My Blogs</a>
+                <a class="dropdown-item" href="blogInput.php">New Blog</a>
             <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="../assets/img/blurred-image-1.jpg">
             </div>
             <div class="col-sm-6 col-lg-3">
@@ -73,7 +74,8 @@ $appy = '
                     if($profession=='faculty') $appy .= '<a class="dropdown-item" href="addproject.php">Add Project</a>';
 
                  $appy .= '<div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="edit-profile.php" >Edit Profile</a>
+                 <a class="dropdown-item" href="edit-profile.php" >Edit Profile</a>
+                 <a class="dropdown-item" >Fame Points : '.$fame.'</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="logout.php">Logout</a>
                 </div>

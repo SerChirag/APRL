@@ -187,7 +187,8 @@ CREATE TABLE `project` (
   `addedon` date NOT NULL,
   `incentive` text NOT NULL,
   `lastdate` date NOT NULL,
-  `status` varchar(25) NOT NULL
+  `status` varchar(25) NOT NULL,
+  `fame_fund` int(11) NOT NULL DEFAULT '0',
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -297,7 +298,8 @@ INSERT INTO `tag` (`tag_id`, `tagname`) VALUES
 CREATE TABLE `userlogin` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `profession` varchar(255) DEFAULT NULL
+  `profession` varchar(255) DEFAULT NULL,
+  `fame` int(11) NOT NULL DEFAULT '100',  
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
