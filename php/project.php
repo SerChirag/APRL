@@ -185,18 +185,36 @@ function count_project($status){
         }
         function deleteProject(id){
           $.ajax({
-              type: 'POST',
-              url: 'deleteproject.php',
-              dataType: 'text/html',
+              type: "POST",
+              url: "deleteproject.php",
               data: {
                   'id':id
               },
               success: function(data){
-                  $('#confirmation').html(data);
+                  $('#project_overview').html(data);
               }
           });
-          console.log('project deleted!');
         }
+        function editProject(id){
+          $.ajax({
+              type: "POST",
+              url: "editproject.php",
+              data: {
+                  'id':id
+              },
+              success: function(data){
+                   $('#project_overview').html(data);
+                console.log('success project edited!');
+                    
+              }
+              // error: function(data){
+              //     // $('#project_overview1').html(data);
+              //       console.log('error project edited!');
+                    
+              // }
+
+          });
+       }
         function showFame(id) {
             var user_id = '<?php echo $username; ?>';
             var value_fame = $("#fame_form").val();
@@ -277,6 +295,7 @@ function count_project($status){
                 else
                 {echo "<script>showHint(\"all\");</script>";} ?>
                 <div id="project_overview"></div>
+                 <div id="project_overview1"></div>
 
 
                 <!-- <script>apply_form("2");</script>

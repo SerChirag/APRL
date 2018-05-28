@@ -40,7 +40,7 @@ $profession = $row['profession'];
    <h1 class='text-center'>$row[title]</h1>";
    if($username==$row['offeredby']){
    echo "<div class='col-md-10'>
-      <button class='btn btn-primary btn-round' type='button' id='edit'>
+      <button class='btn btn-primary btn-round' type='button' id='edit' onclick='editProject(".$_POST['id'].");'>
        <i class='now-ui-icons design-2_ruler-pencil'></i> Edit
      </button>
        <button class='btn btn-primary btn-round' type='button' id='delete' data-toggle='modal' data-target='#confirm-delete'>
