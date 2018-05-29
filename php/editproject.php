@@ -17,6 +17,10 @@ else if(isset($_GET['id']))
   $id = $_GET['id'];
 else
   $id=-1;
+
+$queryl1 = "LOCK TABLES project WRITE";
+if(mysqli_query($dbc, $queryl1)) {}
+
 $query = "SELECT * FROM project WHERE project_id = '$id'";
 $result = mysqli_query($dbc, $query);
 $row = mysqli_fetch_array($result);
@@ -47,6 +51,10 @@ if($id!=-1){
           mkdir(APRL_UPLOADPATH.'project/'.$id); 
       }
     $image1 = $username.'.jpg';      
+
+      $queryl2 = "LOCK TABLES projectimage WRITE";
+        if(mysqli_query($dbc, $queryl2)) {}
+
       $query = "INSERT INTO `projectimage`(`project_id`, `imageurl`) VALUES
       ('$id','$image1')";
       mysqli_query($dbc, $query)
@@ -65,10 +73,16 @@ if($id!=-1){
        $url = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/myproject.php';
     header('Location:'.$url); 
   }
+
+  $queryl3 = "UNLOCK TABLES";
+  if(mysqli_query($dbc, $queryl3)) {}
 }
 else{
  $url = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/myproject.php';
     header('Location:'.$url); 
+
+  $queryl4 = "UNLOCK TABLES";
+  if(mysqli_query($dbc, $queryl4)) {}
 }
 
  echo '
