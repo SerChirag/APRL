@@ -11,14 +11,34 @@ else{
   $id = $_POST['id'];
   //echo $id;
   require('connect.php');
+
+  $queryl1 = "LOCK TABLES applicant WRITE";
+  if(mysqli_query($dbc, $queryl1)) {}
+
   $query = "DELETE FROM applicant WHERE project_id ='$id'";
   mysqli_query($dbc, $query);
+
+  $queryl2 = "LOCK TABLES project WRITE";
+  if(mysqli_query($dbc, $queryl2)) {}
+
   $query = "DELETE FROM project WHERE project_id ='$id'";
   mysqli_query($dbc, $query);
+
+  $queryl3 = "LOCK TABLES projectimage WRITE";
+  if(mysqli_query($dbc, $queryl3)) {}
+
   $query = "DELETE FROM projectimage WHERE project_id ='$id'";
   mysqli_query($dbc, $query);
+
+  $queryl4 = "LOCK TABLES projecttag WRITE";
+  if(mysqli_query($dbc, $queryl4)) {}
+
   $query = "DELETE FROM projecttag WHERE project_id ='$id'";
   mysqli_query($dbc, $query);
+
+  $queryl5 = "UNLOCK TABLES";
+  if(mysqli_query($dbc, $queryl5)) {}
+
   mysqli_close($dbc);
   echo '<div class="alert alert-success" role="alert">
                     <div class="container">
