@@ -42,7 +42,7 @@ if($id!=-1){
       $query = "UPDATE project SET title='$title', description='$desc',incentive='$incentive', lastdate='$lastdate'
       WHERE project_id='$id'";
       mysqli_query($dbc, $query)
-      or die('Unable to addproject');
+      or die('Lock queryl1 READ');
 
       if(!is_dir(APRL_UPLOADPATH."project/")) {
           mkdir(APRL_UPLOADPATH.'project'); 
@@ -55,8 +55,7 @@ if($id!=-1){
       $queryl2 = "LOCK TABLES projectimage WRITE";
         if(mysqli_query($dbc, $queryl2)) {}
 
-      $query = "INSERT INTO `projectimage`(`project_id`, `imageurl`) VALUES
-      ('$id','$image1')";
+      $query = "UPDATE projectimage SET imageurl='$image1', project_id='$id'";
       mysqli_query($dbc, $query)
       or die('Unable to addproject image');
       if($image!=''){

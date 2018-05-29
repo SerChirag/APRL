@@ -364,7 +364,7 @@ console.log("im inside suggest");
 <?php 
 	require('connect.php');
     
-//  $dbc = mysqli_connect('localhost', 'root', NULL, 'aprl')
+//  $dbc = mysqli_connect('localhost', 'root', "admin123", 'june')
 //     or die('Unable to connect to database');
     $blogId = $_GET['hidden_name'];;
 
@@ -384,11 +384,12 @@ console.log("im inside suggest");
         // echo $rowTag2['tagname'];
         // echo $rowTag3['tagname'];
 
-        $querya = "SELECT DISTINCT blog.blog_id,blog.title, blog.description FROM ((blogtag INNER JOIN tag ON 
+        $querya = "SELECT DISTINCT blog.blog_id,blog.title, blog.description, blog.reads FROM ((blogtag INNER JOIN tag ON 
         tag.tag_id = blogtag.tag_id ) INNER JOIN blog ON blog.blog_id = blogtag.blog_id) 
         WHERE (tag.tagname = '$rowTag1[tagname]' AND 
         tag.tagname = '$rowTag2[tagname]' OR tag.tagname = '$rowTag3[tagname]' AND (NOT blog.blog_id =
          '$blogId') ) ORDER BY blog.reads DESC";
+        //  echo $querya;
         
 
         $resulta = mysqli_query($dbc,$querya);

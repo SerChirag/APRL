@@ -15,7 +15,9 @@ if(!empty($_POST['Username']) && !empty($_POST['Firstname']) && !empty($_POST['P
 	or die('Unable to query');
 
 	if(mysqli_num_rows($result) == 0){
-		$query = "INSERT INTO userlogin VALUES('$username', SHA('$password'), '$profession')";
+		require('connect.php');		
+		$query = "INSERT INTO `userlogin`(`username`, `password`, `profession`) VALUES('$username', SHA('$password'), '$profession')";
+		// echo $query;
 		$result = mysqli_query($dbc, $query)
 		or die('Unable to query UserLogin');
 		$var = $profession."info";
