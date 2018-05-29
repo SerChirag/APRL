@@ -20,6 +20,11 @@ else{
         $image = $row['imageurl'];
         $image_url = "'../assets/img/project/".$id."/".$image."'"   ;
 
+        define('APRL_UPLOADPATH', '../assets/img/project/');
+        if(!is_dir(APRL_UPLOADPATH.$id."/")) {
+        	mkdir(APRL_UPLOADPATH.$id,777,true);
+    	}
+
         $query = "SELECT * FROM project join userlogin WHERE project_id = '$id' and project.offeredby=userlogin.username";
         $result = mysqli_query($dbc, $query)
         or die("Unable to extract image url");
@@ -29,7 +34,7 @@ else{
         $var = $profession."info";
         $query = "SELECT * FROM $var WHERE username = $row[username]";
         $result = mysqli_query($dbc, $query)
-        or die("Unable to extract image url");
+        or die("Unable to query student/faculty info image.php");
 
         $col = mysqli_fetch_array($result);
 

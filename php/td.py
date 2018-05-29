@@ -4,7 +4,7 @@ import nltk
 from rake_nltk import Rake
 import MySQLdb
 import re
-db=MySQLdb.connect(user="root",passwd="admin123",db="aprl",unix_socket="/run/mysqld/mysqld.sock")
+db=MySQLdb.connect(user="root",passwd="admin123",db="june",unix_socket="/run/mysqld/mysqld.sock")
 cursor = db.cursor()
 cursor.execute("SELECT description FROM blog ORDER BY date DESC LIMIT 1")
 raw_html = cursor.fetchone()[0]

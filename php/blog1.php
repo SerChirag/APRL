@@ -4,7 +4,7 @@
 session_start();
 if(isset($_SESSION['username'])){
 
-    require_once('connect.php');
+    require('connect.php');
     define('APRL_UPLOADPATH', '../assets/img/');
     // require_once('likesIncr');
     // $blogId = 1;
@@ -32,7 +32,7 @@ if(isset($_SESSION['username'])){
     //echo $vid_name.$img_name;
     $query = "UPDATE blog SET image_url = '$img_name', video_url = '$vid_name' WHERE blog_id = '$blogId'";
     $result = mysqli_query($dbc,$query)
-    or die("Unable to request blog from database");
+    or die("Unable to request added blog from database");
     //$blogId = 1;
     
     
@@ -42,13 +42,14 @@ if(isset($_SESSION['username'])){
 
     $query = "SELECT * FROM blog WHERE blog_id ='$blogId'";
     $result = mysqli_query($dbc,$query)
-    or die("Unable to request blog from database");
+    or die("Unable to request latest blog from database");
     $rowBlog = mysqli_fetch_array($result);
     $title = $rowBlog['title'];
     // echo $title;
     $description = $rowBlog['description'];
     $video_url = $rowBlog['video_url'];
     // echo $description;
+    $GLOBALS['desc']=$description;
     $date = $rowBlog['date'];
     $url = $rowBlog['image_url'];
     $spam = $rowBlog['spam'];
@@ -157,6 +158,8 @@ function suggestTag(){
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="../assets/css/demo.css" rel="stylesheet" />
+    <link href="../assets/css/daddy.css" rel="stylesheet" />
      <!-- <script src="jquery-3.2.1.min.js"></script> -->
 
 <script>
@@ -338,10 +341,9 @@ console.log("im inside suggest");
 
                 </div>
 
-               <div class="container tim-container" style="max-width:800px; padding-top:100px">
+               <div class="container tim-container" style="max-width:800px; padding-top:1px">
 
                    <!-- <h1 class="text-center">Awesome looking header <br> just for my friends</h1> -->
-                   <h4 class="text-center"><?php $date ?></h4>
                    
                    <span id = "addTagsHere">
                     
@@ -358,20 +360,19 @@ console.log("im inside suggest");
                             <button class="btn btn-primary btn-simple btn-round btn-sm" type="button">JavaScript</button>
                         </span> -->
                     </span>
-                    <br>
-                    <br>
+                    
                     <?php
 
-                    $video_url = "../assets/img/blog/".$blogId."/".$video_url;
+                    // $video_url = "../assets/img/blog/".$blogId."/".$video_url;
 
-                    echo ' <video width="800" height="400" controls text-align = "center">
-                                <source src='. $video_url.' type="video/mp4">
-                                  Your browser does not support the video tag.
-                            </video>';
+                    // echo ' <video width="800" height="400" controls text-align = "center">
+                    //             <source src='. $video_url.' type="video/mp4">
+                    //               Your browser does not support the video tag.
+                    //         </video>';
                     ?>
+                    
                     <br>
-                    <br>
-                   <p><?php echo $description ?></p>
+                   <p><?php echo $GLOBALS['desc']; ?></p>
                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> -->      
                    <!--     end extras --> 
 

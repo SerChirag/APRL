@@ -5,7 +5,7 @@ session_start();
 if(isset($_SESSION['username'])){
 
     $username = $_SESSION['username'];
-    require_once('connect.php');
+    require('connect.php');
     $query = "SELECT profession FROM userlogin WHERE username = '$username'";
     $result = mysqli_query($dbc, $query);
     $row = mysqli_fetch_array($result);
@@ -35,6 +35,7 @@ if(isset($_SESSION['username'])){
     // echo $title;
     $description = $rowBlog['description'];
     // echo $description;
+    $GLOBALS['desc']=$description;
     $date = $rowBlog['date'];
     // $url = $rowBlog['url'];
     $spam = $rowBlog['spam'];
@@ -255,7 +256,13 @@ console.log("im inside suggest");
     <link href="../assets/css/demo.css" rel="stylesheet" />
     <link href="../assets/css/daddy.css" rel="stylesheet" />
     <!-- Canonical SEO -->
-    
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="../assets/css/now-ui-kit.css?v=1.1.0" rel="stylesheet" />
+	<!-- CSS Just for demo purpose, don't include it in your project -->
+	<link href="../assets/css/demo.css" rel="stylesheet" />
+    <link href="../assets/css/daddy.css" rel="stylesheet" />
+    <!-- jquery library -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 
     
@@ -293,7 +300,7 @@ console.log("im inside suggest");
         </div>
         <div class="section">
             <div class="container">
-                <div class="button-container">
+                <div class="button-container" >
 
                     <div class="photo-container">
                         <img src="../assets/img/ryan.jpg" alt="">
@@ -302,15 +309,12 @@ console.log("im inside suggest");
                     <p class="category" id="titlekiid"><?php echo $offeredby ?></p>
                     <p class="category" ><?php echo $date ?></p>
 
+                   <!-- <h2 class="text-center"><?//php echo $title; ?></h1> -->
+                   
                 </div>
 
-               <div class="container tim-container" style="max-width:800px; padding-top:100px">
-
-                   <!-- <h1 class="text-center">Awesome looking header <br> just for my friends</h1> -->
-                   <h4 class="text-center"><?php $date ?></h4>
-                   
-                   <span id = "addTagsHere">
-                    
+               <div class="container tim-container" style="max-width:900px; padding-top:10px">
+                   <span id = "addTagsHere"> 
                     <?php getTags()?>
                         <!-- span >
                             <button class="btn btn-primary btn-simple btn-round btn-sm" type="button" >HTML</button>
@@ -325,10 +329,8 @@ console.log("im inside suggest");
                         </span> -->
                     </span>
                     <br>
-                    <br>
-                    
 
-                   <p><?php echo $description ?></p>
+                   <p><?php echo $GLOBALS['desc']; ?></p>
                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> -->      
                    <!--     end extras --> 
 

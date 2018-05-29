@@ -24,6 +24,7 @@ if(isset($_POST['submit'])){
     $image = $_FILES['Image']['name'];
     $query = "INSERT INTO `project`(`offeredby`, `title`, `description`, `addedon`, `incentive`, `lastdate`, `status`)
     VALUES('$username','$title','$desc',now(),'$incentive','$lastdate','available') ";
+    //echo $query;
     mysqli_query($dbc, $query)
     or die('Unable to addproject');
 
@@ -39,14 +40,15 @@ if(isset($_POST['submit'])){
     if(!is_dir(APRL_UPLOADPATH."project/".$id.'/')) {
         mkdir(APRL_UPLOADPATH.'project/'.$id); 
     }
-
+    $image1 = $username.'.jpg';
     $query = "INSERT INTO `projectimage`(`project_id`, `imageurl`) VALUES
-    ('$id','$image')";
+    ('$id','$image1')";
     mysqli_query($dbc, $query)
     or die('Unable to addproject image');
     if($image!=''){
-        $target = APRL_UPLOADPATH.'project/'.$id.'/'.$image;
-        //echo $target;  
+
+        $target = APRL_UPLOADPATH.'project/'.$id.'/'.$image1;
+        // echo $target; 
 
 
 
